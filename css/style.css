@@ -40,15 +40,13 @@ ul {
 
 .dropdown-menu {
   position: absolute;
+  top: 50px;
   display: none;
   flex-direction: column;
+  margin: 0;
 }
 
-.dropdown-menu a {
-  background-color: lightgray;
-  width: 100%;
-  padding: 5px 10px;
-}
+
 
 .dropped {
   display: flex;
@@ -65,6 +63,12 @@ li:not(:last-child) {
 }
 
 .dropdown-menu li {
-  margin: 10px 0 0 0;
   z-index: 1;
+}
+
+.dropdown-menu li a {
+  background-color: lightgray;
+  width: 100%;
+  padding: 5px 10px;
+  margin: 0;
 }
