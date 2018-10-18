@@ -9,11 +9,9 @@ elems.forEach(elem => {
   }
 
   function closeMenu() {
-    if (dropMenuItems.classList.contains('dropped')) {
-      dropMenuItems.classList.remove('dropped');
-    }
+    if (dropMenuItems.classList.contains('dropped')) dropMenuItems.classList.remove('dropped');
   }
 
-  elem.addEventListener('mouseover', dropMenu);
+  elem.addEventListener('click', dropMenu);
   elem.addEventListener('mouseout', closeMenu);
 })
