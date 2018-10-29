@@ -1,17 +1,20 @@
 var elems = document.querySelectorAll('.menu-item');
 
 elems.forEach(elem => {
-  var dropMenuItems = elem.querySelector('.dropdown-menu');
+  var dropMenu = elem.querySelector('.dropdown-menu');
+  var dropMenuItems = dropMenu.querySelectorAll('li');
 
-  function dropMenu() {
-    dropMenuItems.classList.toggle('dropped');
-
+  function toDropMenu(event) {
+    console.log(event.target);
+    dropMenu.classList.toggle('dropped');
   }
 
-  function closeMenu() {
-    if (dropMenuItems.classList.contains('dropped')) dropMenuItems.classList.remove('dropped');
+  function toCloseMenu() {
+    if (dropMenu.classList.contains('dropped')) dropMenu.classList.remove('dropped');
   }
 
-  elem.addEventListener('click', dropMenu);
-  elem.addEventListener('mouseout', closeMenu);
+  elem.addEventListener('click', toDropMenu);
+  dropMenuItems.forEach(a => {
+    a.addEventListener('mouseout', toCloseMenu);
+  })
 })
