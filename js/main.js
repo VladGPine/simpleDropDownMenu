@@ -1,20 +1,28 @@
-var elems = document.querySelectorAll('.menu-item');
+const menu = document.querySelector('.main-menu');
+const menuItems = menu.querySelectorAll('.menu-item');
+const dropMenu = menu.querySelectorAll('.dropdown-menu');
 
-elems.forEach(elem => {
-  var dropMenu = elem.querySelector('.dropdown-menu');
-  var dropMenuItems = dropMenu.querySelectorAll('li');
-
-  function toDropMenu(event) {
-    console.log(event.target);
-    dropMenu.classList.toggle('dropped');
+function handler(event) {
+  let target = event.target;
+  
+  if (!target.className =='menu-item') {
+    return;
+  } else {
+    target.nextElementSibling.classList.add('dropped');
   }
+}
 
-  function toCloseMenu() {
-    if (dropMenu.classList.contains('dropped')) dropMenu.classList.remove('dropped');
-  }
-
-  elem.addEventListener('click', toDropMenu);
-  dropMenuItems.forEach(a => {
-    a.addEventListener('mouseout', toCloseMenu);
+function toCloseMenu() {
+  dropMenu.forEach(el => {
+    if (el.classList.contains('dropped')) {
+      el.classList.remove('dropped');
+    }
   })
+}
+
+menu.addEventListener('click', handler);
+menuItems.forEach(el => {
+  el.addEventListener('mouseleave', toCloseMenu)
 })
+
+// console.log(menu);
